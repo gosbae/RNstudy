@@ -18,16 +18,18 @@ import {
   Image,
   FlatList,
 } from 'react-native';
-import {Person} from './src/copy/Person';
+import {Person} from './src/screens/Person';
 import * as D from './src/data';
 import 'react-native-screens';
-import { useClock } from './src/hooks/useClock';
+import {useClock} from './src/hooks/useClock';
+import TopBar from './src/screens/TopBar';
 
 const people: D.IPerson[] = D.makeArray(10).map(D.createRandomPerson);
 function App() {
-  const time=useClock();
+  const time = useClock();
   return (
     <SafeAreaView style={[styles.safeAreaView]}>
+      <TopBar />
       <View style={{alignItems: 'flex-end'}}>
         <Text>
           {time.toLocaleDateString()} {time.toLocaleTimeString()}

@@ -1,17 +1,35 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import * as D from '../data';
 
-const title = 'TopBar';
+export type TopBarProps = {};
 
-export default function TopBar() {
+const TopBar = () => {
+  const add = useCallback(() => {}, []);
+  const deleteAll = useCallback(() => {}, []);
   return (
-    <View style={[styles.view]}>
-      <Text style={[styles.text]}>{title}</Text>
+    <View style={styles.topBar}>
+      <Text style={[styles.textButton]} onPress={() => add()}>
+        add
+      </Text>
+      <Text style={[styles.textButton]} onPress={() => deleteAll()}>
+        delete all
+      </Text>
     </View>
   );
-}
+};
+
+export default TopBar;
+
 const styles = StyleSheet.create({
-  view: {padding: 5, backgroundColor: 'blue', flex:0.3},
-  text: {fontSize: 20, color: 'white'},
+  topBar: {
+    flexDirection: 'row',
+    padding: 5,
+    justifyContent: 'space-between',
+    backgroundColor: 'lightblue',
+  },
+  textButton: {
+    color: 'white',
+    fontSize: 20,
+  },
 });
